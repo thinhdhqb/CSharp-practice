@@ -10,6 +10,13 @@ namespace ConsoleApp2
     {
         static void Main(string[] args)
         {
+            //Min_max();
+            Frequency();
+            Console.ReadLine();
+        }
+
+        static void Min_max()
+        {
             Console.Write("Nhap n: ");
             int n = Convert.ToInt32(Console.ReadLine());
             List<int> list = new List<int>(n);
@@ -26,7 +33,28 @@ namespace ConsoleApp2
             }
             Console.WriteLine("MAX: " + max);
             Console.WriteLine("MIN: " + min);
-            Console.ReadLine();
+        }
+
+        static void Frequency()
+        {
+            Console.WriteLine("============");
+            Console.Write("Nhap n: ");
+            int n = Convert.ToInt32(Console.ReadLine());
+            List<int> list = new List<int>(n);
+            Dictionary<int, int> dict = new Dictionary<int, int>();
+            int val;
+            for (int i = 0; i < n; i++)
+            {
+                Console.Write("Nhap phan tu " + i + ": ");
+                val = Convert.ToInt32(Console.ReadLine());
+                if (dict.ContainsKey(val)) dict[val]++;
+                else dict[val] = 1;
+                list.Add(val);
+            }
+            foreach(var item in dict)
+            {
+                Console.WriteLine(item.Key + ": " + item.Value + " times.");
+            }
         }
     }
 }
