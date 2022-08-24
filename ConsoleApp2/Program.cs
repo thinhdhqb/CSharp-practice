@@ -10,14 +10,15 @@ namespace ConsoleApp2
     {
         static void Main(string[] args)
         {
-            //Min_max();
-            Frequency();
+            List<int> list = Input_list();
+            Min_max(list);
+            Frequency(list);
             Console.ReadLine();
         }
         
-        static void Min_max()
+        static List<int> Input_list()
         {
-            Console.Write("Nhap n: ");
+            Console.Write("Nhap so luong phan tu: ");
             int n = Convert.ToInt32(Console.ReadLine());
             List<int> list = new List<int>(n);
             for (int i = 0; i < n; i++)
@@ -25,6 +26,10 @@ namespace ConsoleApp2
                 Console.Write("Nhap phan tu " + i + ": ");
                 list.Add(Convert.ToInt32(Console.ReadLine()));
             }
+            return list;
+        }
+        static void Min_max(List<int> list)
+        {
             int max = list[0], min = list[0];
             foreach (int x in list)
             {
@@ -35,20 +40,13 @@ namespace ConsoleApp2
             Console.WriteLine("MIN: " + min);
         }
 
-        static void Frequency()
+        static void Frequency(List<int> list)
         {
-            Console.WriteLine("==============");
-            Console.Write("Nhap n: ");
-            int n = Convert.ToInt32(Console.ReadLine());
-            List<int> list = new List<int>(n);
             Dictionary<int, int> dict = new Dictionary<int, int>();
-            for (int i = 0; i < n; i++)
+            foreach (int item in list)
             {
-                Console.Write("Nhap phan tu " + i + ": ");
-                int val = Convert.ToInt32(Console.ReadLine());
-                if (dict.ContainsKey(val)) dict[val]++;
-                else dict[val] = 1;
-                list.Add(val);
+                if (dict.ContainsKey(item)) dict[item]++;
+                else dict[item] = 1;
             }
             foreach(var item in dict)
             {
